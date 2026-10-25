@@ -1,0 +1,44 @@
+[project]
+name = "eegcrossformer"
+version = "0.1.0"
+description = "Dual-band EEG decoding with token-wise fusion and Gain RTUR"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+authors = [{name = "rexjz"}]
+dependencies = [
+  "torch==2.7.1",
+  "lightning>=2.5.0.post0,<3.0",
+  "torcheeg==1.1.3",
+  "numpy==1.26.4",
+  "pandas==2.2.3",
+  "scipy==1.10.1",
+  "mne==1.9.0",
+  "einops>=0.8.0,<0.9",
+  "python-dotenv==1.0.1",
+  "pymatreader>=1.0.0,<2.0",
+  "tqdm>=4.66.0",
+  "torchmetrics>=1.3.0,<2.0",
+  "tensorboard>=2.20.0",
+  "scikit-learn>=1.4.0,<2.0",
+  "matplotlib==3.9.4",
+  "seaborn>=0.12.1,<0.13",
+  "braindecode==0.7",
+  "moabb==1.2.0",
+]
+
+[project.optional-dependencies]
+gpu = ["flash-linear-attention==0.5.0"]
+
+[project.scripts]
+eegcrossformer = "eegcrossformer.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"eegcrossformer.models" = ["FLA_LICENSE.txt"]
+
